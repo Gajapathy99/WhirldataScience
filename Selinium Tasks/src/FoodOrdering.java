@@ -1,101 +1,98 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class FoodOrdering {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc= new Scanner(System.in); 
-		System.out.println(" Enter 1 for Juice \n Enter 2 for Starter \n Enter 3 for Dinner \n Enter 4 for Lunch");
-		int choice=sc.nextInt();
-		if(choice==1) {
-				System.out.println(" 1.Sweetlime \t 2.Lemon \t 3.Watermelon");
-				int juice=sc.nextInt();
-				switch(juice) {
-					case 1: {
-						System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-						System.out.println(" 1\t\tSweetlime\t\t\t\t70\t\t\t18%\t\t\t82.60");
-					}
-					break;
-					case 2: {
-						System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-						System.out.println(" 1\t\tLemon\t\t\t\t70\t\t\t18%\t\t\t82.60");
-					}
-					break;
-					case 3: {
-						System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-						System.out.println(" 1\t\tWatermelon\t\t\t\t70\t\t\t18%\t\t\t82.60");
-					}
-					break;
-					default: System.out.println("Invalid Choice");
-				}
-			}
-		else if(choice==2) {
-			System.out.println(" 1.Paneer Tikka \t 2.Babycorn Fritters \t 3.Mushroom Tikka");
-			int juice=sc.nextInt();
-			switch(juice) {
-				case 1: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tPaneer Tikka\t\t150\t\t\t18%\t\t\t177");
-				}
-				break;
-				case 2: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tBabycorn Fritters\t\t150\t\t\t18%\t\t\t177");
-				}
-				break;
-				case 3: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tMushroom Tikka\t\t150\t\t\t18%\t\t\t177");
-				}
-				break;
-				default: System.out.println("Invalid Choice");
+		Scanner sc= new Scanner(System.in);
+		System.out.println("\nEnter 1 for Starters"+" "+"2 for Breakfast"+" "+"3 for Lunch"+" "+"4 for Dinner");
+		String y=sc.next();
+		int course= sc.nextInt();
+		while(y==y) {
+			switch(course) {
+			case 1: starters();
+			break;
+			case 2: breakfast();
+			break;
+			case 3: lunch();
+			break;
+			case 4: dinner();
+			break;
+			default:System.out.println("\n Invalid choice");
 			}
 		}
-		else if(choice==3) {
-			System.out.println(" 1.Idly \t 2.Dosa \t 3.Poori");
-			int juice=sc.nextInt();
-			switch(juice) {
-				case 1: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tIdly\t\t\t\t50\t\t\t18%\t\t\t58.5");
-				}
-				break;
-				case 2: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tDosa\t\t\t\t100\t\t\t18%\t\t\t118");
-				}
-				break;
-				case 3: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tPoori\t\t\t\t100\t\t\t18%\t\t\t118");
-				}
-				break;
-				default: System.out.println("Invalid Choice");
-			}
-		}
-		else if(choice==4) {
-			System.out.println(" 1.South Indian Thali \t 2.North Indian Thali \t 3.Mini Lunch");
-			int juice=sc.nextInt();
-			switch(juice) {
-				case 1: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tSouth Indian Thali\t150\t\t\t18%\t\t\t177");
-				}
-				break;
-				case 2: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tNorth Indian Thali\t150\t\t\t18%\t\t\t177");
-				}
-				break;
-				case 3: {
-					System.out.println("\n S.No\t\tProduct\t\t\t\tPrice\t\t\tGST\t\t\tAmount Payable");
-					System.out.println(" 1\t\tMini Lunch\t\t\t100\t\t\t18%\t\t\t118");
-				}
-				break;
-				default: System.out.println("Invalid Choice");
-			}
-		}
-		else
-			System.out.println("Invalid Choice");
+		
 	}
-}
+	
+	public static void starters() {
+		Scanner s1=new Scanner(System.in);
+		TreeMap<String,Integer> starters = new TreeMap<String, Integer>(); 
+		// Mapping string values to int keys 
+		starters.put("Paneer Tikka", 150); 
+		starters.put("Babycorn fritters", 150  );
+		starters.put("Mushroom Tikka", 200  ); 
+		
+		// Displaying the TreeMap 
+		System.out.println("\n Starters Menu: ");
+		Iterator<String> itr = starters.keySet().iterator();
+        while (itr.hasNext()) {
+        System.out.println("\t"+itr.next());
+        }	
+	    
+	} 
+	public static void breakfast() {
+		TreeMap<String,Integer> breakfast = new TreeMap<String, Integer>(); 
+		// Mapping string values to int keys 
+		breakfast.put("Idly", 50); 
+		breakfast.put("Dosa", 100  );
+		breakfast.put("Pongal", 100  ); 
+		
+		// Displaying the TreeMap 
+		System.out.println("\n Breakfast Menu: ");
+		Iterator<String> itr = breakfast.keySet().iterator();
+        while (itr.hasNext()) {
+            System.out.println("\t"+itr.next());
+        	}
+        }
+	public static void lunch() {
+		TreeMap<String,Integer> lunch = new TreeMap<String, Integer>(); 
+		// Mapping string values to int keys 
+		lunch.put("South Indian Thali ", 240); 
+		lunch.put("North Indian Thali", 240  );
+		lunch.put("Mini Lunch", 180  ); 
+		
+		// Displaying the TreeMap 
+		System.out.println("\n Lunch Menu: ");
+		Iterator<String> itr = lunch.keySet().iterator();
+        while (itr.hasNext()) {
+            System.out.println("\t"+itr.next());
+        }
+		}
+	public static void dinner() {
+		TreeMap<String,Integer> dinner = new TreeMap<String, Integer>(); 
+		// Mapping string values to int keys 
+		dinner.put("Naan", 50); 
+		dinner.put("Paneer Butter Masala", 170  );
+		dinner.put("kulcha", 50  ); 
+		
+		// Displaying the TreeMap 
+		System.out.println("\n Dinner Menu: ");
+		Iterator<String> itr = dinner.keySet().iterator();
+        while (itr.hasNext()) {
+            System.out.println("\t"+itr.next());
+        	}
+        }
+	/*public static String startersChoice() {
+			
+			ArrayList<String> list = new ArrayList<String>();
+			list.add("Paneer Tikka");
+			list.add("Mushroom Tikka");
+		
+		return list[0];
+	}*/
+		
+	}
+
